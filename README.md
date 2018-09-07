@@ -8,7 +8,7 @@ Es la clase donde se hace el procesamiento general del programa
 
 
 ## Clase Esquema
-Clase abstracta que representa un esquema o combinación de colores que sigue unas reglas específicas
+Clase abstracta que representa un esquema o combinaciÃ³n de colores que sigue unas reglas especÃ­ficas
 *Atributos:
 - **x:** Un entero que representa la posicion en x.
-* Metodos:
+- **y:** Un entero
