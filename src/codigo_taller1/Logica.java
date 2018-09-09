@@ -12,6 +12,7 @@ public class Logica {
 		private LinkedList<Cafe> cafes;
 		private LinkedList<Rosa> rosas;
 		private Reloj relojito;
+		private Gallo gallito;
 		private LinkedList<Lluvia> gotas;
 		private boolean escribir;
 		
