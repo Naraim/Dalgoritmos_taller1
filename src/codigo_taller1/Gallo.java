@@ -23,4 +23,6 @@ public class Gallo {
 	public void mover(){
 		
 	}
+	
+	
 }
