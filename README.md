@@ -93,3 +93,13 @@ Clase que genera un objeto gráfico de reloj.
 - *setAng1(float)* Modifica la variable.
 - *setAng2(float)* Modifica la variable.
 
+## Clase Gallo
+Clase que genera un objeto gráfico de un gallo geométrico.
+* **Atributos:**
+- *x*. Posición en X.
+- *y*. Posición en Y.
+* **Metodos**:
+- *pintar()* Definición gráfica de la clase Gallo.
+- *mover()* Se usa cuando el usuario mueve el objeto.
+
+
