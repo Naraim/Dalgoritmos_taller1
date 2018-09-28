@@ -21,7 +21,7 @@ public class Rosa extends Particula {
 		
 	}
 	
-	public int getX() {
+	public float getX() {
 		return posX;
 	}
 	
@@ -29,12 +29,19 @@ public class Rosa extends Particula {
 		posX = x;
 	}
 	
-	public int getY() {
+	public float getY() {
 		return posY;
 	}
 	
 	public void setY(int y) {
 		posY = y;
+	}
+
+
+	@Override
+	public boolean verificar(float mx, float my) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -4,12 +4,12 @@ import processing.core.PApplet;
 
 public abstract class Particula {
 	
-	protected int posX;
-	protected int posY;
+	protected float posX;
+	protected float posY;
 	protected boolean mover;
 	protected PApplet app;
 	
-	public Particula(PApplet app, int x, int y) {
+	public Particula(PApplet app, float x, float y) {
 		this.app = app;
 		posX = x;
 		posY = y;
@@ -18,6 +18,8 @@ public abstract class Particula {
 	
 	public abstract void pintar();
 	
-	public abstract void mover();
+	public abstract boolean verificar(float mx, float my);
+	
+	
 
 }
