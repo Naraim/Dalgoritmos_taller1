@@ -6,6 +6,7 @@ public class Gallo {
 	
 	private float x;
 	private float y;
+	private boolean mover;
 	private PApplet app;
 	
 	public Gallo(PApplet app, float d, float e){
@@ -74,6 +75,14 @@ public class Gallo {
 	public void desplazar(float mx, float my) {
 		x = mx;
 		y = my;
+	}
+	
+	public boolean getMover() {
+		return mover;
+	}
+	
+	public void setMover(boolean l) {
+		mover = l;
 	}
 	
 	

@@ -14,9 +14,9 @@ public class Maiz extends Particula {
 		// TODO Auto-generated method stub
 			//Pintar el grano de maiz
 			app.stroke(39,74,80);
-		
-			
-			
+			app.strokeWeight(1);
+			app.ellipseMode(app.CENTER);
+
 			//Amarillo1
 			app.fill(39,74,80);
 			app.triangle(posX, posY, posX-(8.18f), posY-(40.54f), posX+(40.54f), posY-(8.17f));
