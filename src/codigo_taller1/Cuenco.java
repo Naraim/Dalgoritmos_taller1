@@ -16,7 +16,7 @@ public class Cuenco {
 		mover = false;
 		
 	}
-	
+
 	public void pintar() {
 
 		if(!llenar) {
@@ -66,5 +66,13 @@ public class Cuenco {
 	
 	public void setMover(boolean l) {
 		mover = l;
+	}
+	
+	public float getPosx() {
+		return posx;
+	}
+	
+	public float getPosy() {
+		return posy;
 	}
 }

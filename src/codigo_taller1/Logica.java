@@ -42,14 +42,11 @@ public class Logica {
 			if(palabras[76].contains("reloj")) {
 				relojito = new Reloj(app, app.width/2, app.height/2);
 			}
-			
-			
+	
 			//Añadir gallo
 			if (palabras[48].contains("gallo")) {
 				gallito = new Gallo(app, app.width/(1.276f), app.height/(6.301f));
 			}
-			
-			
 			cuenco = new Cuenco(app, app.width/(1.20f), app.height/(1.19f));
 			escribir = false;
 			caerAgua = true;
@@ -61,11 +58,28 @@ public class Logica {
 			app.background(0, 100, 22);
 			pintarFiguras();
 			
+		texto[0]=app.join(palabras, ' ');
+				app.saveStrings("nuevoTexto.txt", texto);
+			
+			
+			for (int i = 0; i < gotas.length; i++) {
+				if(gotas[i].getX() > cuenco.getPosx()-(67.31f) && gotas[i].getX() < cuenco.getPosx()+(67.31f) && gotas[i].getY() > cuenco.getPosy()-40) {
+					gotas[i].setLlenar(true);
+					cuenco.setLlenar(true);
+					for (int j = 0; j < palabras.length; j++) {
+						if(palabras[i].contains("tarro")) {
+							String temp= palabras[i];
+							palabras[i] = temp + " lleno";
+						}
+					}
+				} else {
+					gotas[i].setLlenar(false);
+				}	
+			}
+			
 			//Pintar el gallo
 				gallito.pintar();
-			
-			
-			
+
 			//Pintar el cuenco
 			cuenco.pintar();
 			
@@ -113,6 +127,7 @@ public class Logica {
 				app.text("Ve a llenarlo", app.mouseX - 50, app.mouseY + 70);
 			}
 			
+			pintarLlave();
 	
 			//Verificar posición del mouse en el lienzo
 			app.fill(0,0,100);
@@ -143,11 +158,11 @@ public class Logica {
 		public void drag() {
 			
 			//Mover el gallo
-				if(mover && gallito.mover(app.mouseX, app.mouseY) && gallito.getMover()) {
+				if(mover && gallito.getMover()) {
 					gallito.desplazar(app.mouseX, app.mouseY);
 				}
 			//Mover el cuenco
-				if(mover && cuenco.verificar(app.mouseX, app.mouseY) && cuenco.getMover()) {
+				if(mover && cuenco.getMover()) {
 					cuenco.mover(app.mouseX);	
 				}
 					
@@ -160,35 +175,52 @@ public class Logica {
 					if(p instanceof Maiz) {
 						if(gallito.mover(app.mouseX, app.mouseY) && p.verificar(app.mouseX, app.mouseY)) {
 							it.remove();
+							for (int i = 0; i < palabras.length; i++) {
+								if(palabras[i].contains("maíz")) {
+									palabras[i] = palabras[i].replace("maíz", "hambriento");
+								}
+							}
 						}
 					}
 				}
 		}
 		
 		public void release() {
-			if(mover && gallito.mover(app.mouseX, app.mouseY)) {
-				mover = false;
 				gallito.setMover(false);
-			}
-			if(mover && cuenco.verificar(app.mouseX, app.mouseY)) {
 				mover = false;
 				cuenco.setMover(false);
-			}
+			
 		}
 		
 		public void tecla(char c) {
 			
 			//Añadir figuras
 			if(c == 'm' || c == 'M') {
-				figuras.add(new Maiz(app, app.random(app.width/2, app.width-40), app.random(app.height/2,app.height - 40)));
+				figuras.add(new Maiz(app, app.random(app.width/4*3, app.width-40), app.random(app.height/2,app.height - 40)));
+				String temp = palabras[palabras.length-1];
+				palabras[palabras.length-1] = temp+" maíz";
 			}
 			
 			if(c == 'c' || c == 'C') {
 				figuras.add(new Cafe(app, app.random(10, app.width/4), app.random(40,app.height/2)));
+				for (int i = 0; i < palabras.length; i++) {
+					if(palabras[i].contains("cocina")) {
+						palabras[i] = "grano de café";
+					}
+				}
 			}
 			
 			if(c == 'r' || c == 'R') {
-				figuras.add(new Rosa(app, app.random(10, app.width/4), app.random(40,app.height/2)));
+				figuras.add(new Rosa(app, app.random(10, app.width/4), app.random(app.height/2, app.height - 20)));
+					for (int i = 0; i < palabras.length; i++) {
+						for (int j = 0; j < palabras[i].length(); j++) {
+							if(palabras[i].charAt(j) == 's') {
+								String temp = palabras[i];
+								temp = palabras[i].replace("s", "ROSAS");
+								palabras[i] = temp;
+							}
+						}
+					}
 			}
 		}
 		
@@ -225,6 +257,15 @@ public class Logica {
 				app.textSize(30);
 				app.textAlign(app.CENTER);
 				app.text('c', posx, posy + 5);
+			
+		}
+		
+		public void pintarLlave() {
+			
+			//Pintar la llave del agua
+				app.fill(1,100,16);
+				app.noStroke();
+				app.rect(app.width/(3.29f), 0, 70, 80);
 		}
 		
 		

@@ -12,11 +12,13 @@ public class Main extends PApplet {
 	
 	public void settings() {
 		size(1200,700); 
+		//fullScreen();
 	}
 	
 	public void setup() {
 		log = new Logica(this);
 		colorMode(HSB, 360, 100, 100);
+		
 	}
 	
 	public void draw() {

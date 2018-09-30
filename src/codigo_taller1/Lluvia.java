@@ -7,25 +7,21 @@ public class Lluvia {
 	private float x;
 	private float y;
 	private float vel;
-	private float val;
 	private boolean llenar;
 	private PApplet app;
 	
 	
 	public Lluvia(PApplet app) {
 		this.app = app;
-		x = app.random(app.width/(3.1f), app.width/(3.1f) + 50);
-		y = 20;
-		vel = app.random(2, 5);
-		val = vel + 0.2f;
+		x = app.random(app.width/(3.1f), app.width/(3.29f) + 50);
+		y = app.random(-1000, 20);
+		vel = app.random(2, 5);;
 		llenar = false;
 	}
 	
 	public void pintar() {
 		
-		app.fill(1,100,16);
-		app.noStroke();
-		app.rect(app.width/(3.1f), 0, 50, 70);
+		
 		app.fill(179,100,60);
 		app.stroke(179,100,60);
 		app.strokeWeight(1);
@@ -35,7 +31,7 @@ public class Lluvia {
 
 	
 		if(llenar) {
-			if(y > app.height/(1.23f)) {
+			if(y > 100) {
 				y = 20;
 				vel = app.random(2, 5);
 			}
@@ -56,7 +52,7 @@ public class Lluvia {
 	
 	public void caer() {
 		y += vel;
-		vel = val;
+		vel += 0.01;
 	}
 	
 	public void setLlenar(boolean l) {
@@ -70,6 +66,12 @@ public class Lluvia {
 			return false;
 		}
 	}
-	
 
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
+	}
 }
